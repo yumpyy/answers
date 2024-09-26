@@ -1,7 +1,7 @@
 Topic: [Django Signals](https://docs.djangoproject.com/en/3.2/topics/signals/#receiver-functions)
 =================================================================================================
 
-1. By default are django signals executed synchronously or asynchronously? Please support your answer with a code snippet that conclusively proves your stance. The code does not need to be elegant and production ready, we just need to understand your logic.
+**1.** By default are django signals executed synchronously or asynchronously? Please support your answer with a code snippet that conclusively proves your stance. The code does not need to be elegant and production ready, we just need to understand your logic.
 
 **Ans.** In Django 3.2 as well as other versions before 5.0, Signals are executed synchronously by default.
 Though from version 5.0, It is possible to use Signal.asend() method for sending signals asynchronously and use async in the receiver function.
@@ -36,7 +36,9 @@ def create_blog_post(title, author, content):
 
 The above code will wait 5 seconds before printing "Post created and notified the users" because the sending signals isnt asynchronous. The porgram will first execute the receiver function and then execute the print statement in the create_blog_post() function. This proves that by default, signals are asynchronous.
 
-2. Do django signals run in the same thread as the caller? Please support your answer with a code snippet that conclusively proves your stance. The code does not need to be elegant and production ready, we just need to understand your logic.
+---
+
+**2.** Do django signals run in the same thread as the caller? Please support your answer with a code snippet that conclusively proves your stance. The code does not need to be elegant and production ready, we just need to understand your logic.
 
 **Ans.** Yes, django signals and the caller of the signal run in the same thread.
 
@@ -72,7 +74,9 @@ def create_blog_post(title, author, content):
     """
 ```
 
-3. By default do django signals run in the same database transaction as the caller? Please support your answer with a code snippet that conclusively proves your stance. The code does not need to be elegant and production ready, we just need to understand your logic.
+---
+
+**3.** By default do django signals run in the same database transaction as the caller? Please support your answer with a code snippet that conclusively proves your stance. The code does not need to be elegant and production ready, we just need to understand your logic.
 
 **Ans.** By default, django signals do not run in the same database transaction as the caller. Each SQL query runs in its own transaction.
 But it is possible to run both in same transaction using either `transaction.atomic` decorator or `transaction.atomic` context manager.
